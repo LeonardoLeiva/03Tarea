@@ -2,7 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 '''
-Primer intento de implementar runge kutta
+Implementa un método para integrar por Runge Kutta 3 y grafica los resultados de
+una EDO para ciertos valores iniciales.
 '''
 
 m=1.622
