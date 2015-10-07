@@ -66,7 +66,7 @@ ax.plot(x,y,z)
 ax.set_xlabel('x')
 ax.set_ylabel('y')
 ax.set_zlabel('z')
-plt.title('Atractor de Lorentz en 3-Dim')
+#plt.title('Atractor de Lorentz en 3-Dim')
 plt.show()
 
 #print x
