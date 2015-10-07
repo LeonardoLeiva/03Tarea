@@ -52,7 +52,7 @@ dy0=0
 
 s0=0 #valor inicial de la variable independiente
 sf=20*np.pi #valor final de la variable independiente
-n=1000
+n=5000
 h=sf/n #paso
 s=np.linspace(s0,sf,n) #arreglo var indep
 #arreglos para la variable dependiente y su derivada
@@ -68,39 +68,54 @@ for t in s: #iteracion para integrar la funcion
     y1.append(rk[0]) #agrega valores obtenidos para y y su derivada
     dy1.append(rk[1])
     i=i+1
-s=np.append(s,20*np.pi) #arregla el problema de la dimension de matrices que se
-#presenta. queda pendiente una mejor manera de hacer calzar las dimensiones
-
 #proceso para las segundas condiciones iniciales
-y0=0
-dy0=4
+y0_2=4
+dy0_2=0
 y2=[]
 dy2=[]
-y2.append(y0)
-dy2.append(dy0)
-i=0
+y2.append(y0_2)
+dy2.append(dy0_2)
+k=0
 for t in s:
-    yn=y1[i]
-    dyn=dy1[i]
+    yn=y2[k]
+    dyn=dy2[k]
     rk=rk3(f,yn,dyn,h)
     y2.append(rk[0])
     dy2.append(rk[1])
-    i=i+1
+    k=k+1
+s=np.append(s,20*np.pi) #arregla el problema de la dimension de matrices que se
+#presenta. queda pendiente una mejor manera de hacer calzar las dimensiones
+
 
 #graficar
 
-fig=plt.figure(1)
-fig.clf()
-ax1=fig.add_subplot(211)
+fig1=plt.figure(1)
+fig1.clf()
+ax1=fig1.add_subplot(212)
 ax1.plot(y1,dy1)
-plt.title('y(s) vs dy/ds para condiciones iniciales y=0.1 dy/ds=0')
+plt.title('y(s) vs dy/ds')
 ax1.set_xlabel('y')
 ax1.set_ylabel('dy/ds')
-ax2=fig.add_subplot(212)
-ax2.plot(y2,dy2)
-plt.title('y(s) vs dy/ds para condiciones iniciales y=0 dy/ds=4')
-ax2.set_xlabel('y')
-ax2.set_ylabel('dy/ds')
+
+ax2=fig1.add_subplot(211)
+ax2.plot(s,y1)
+plt.title('s vs y(s)')
+ax2.set_xlabel('s')
+ax2.set_ylabel('y')
+
+fig2=plt.figure(2)
+fig2.clf()
+ax3=fig2.add_subplot(212)
+ax3.plot(y2,dy2)
+plt.title('y(s) vs dy/ds')
+ax3.set_xlabel('y')
+ax3.set_ylabel('dy/ds')
+
+ax4=fig2.add_subplot(211)
+ax4.plot(s,y2)
+plt.title('s vs y(s)')
+ax4.set_xlabel('s')
+ax4.set_ylabel('y')
 
 
 
